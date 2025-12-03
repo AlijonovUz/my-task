@@ -24,22 +24,11 @@ SECRET_KEY = "django-insecure--m=fxrq)zs5)3$f^3g87@a@9z+3bdu30kh$9+ocvq6+jkeu4^n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    "api.alijonov.uz",
-    "task.alijonov.uz",
-    "localhost",
-    "127.0.0.1",
-]
-
-CORS_ALLOWED_ORIGINS = [
-    "https://task.alijonov.uz",
-]
-
+ALLOWED_HOSTS = ['*']
+CORS_ALLOWED_ORIGINS = ["https://task.alijonov.uz"]
 CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = ["https://task.alijonov.uz"]
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://task.alijonov.uz",
-]
 
 # Application definition
 
@@ -56,6 +45,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "corsheaders",
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
@@ -140,6 +130,19 @@ REST_FRAMEWORK = {
 # Simple JWT settings
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+}
+
+# Swagger settings
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': False, 
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization',
+            'description': "JWT format: **Bearer eyJhbGciOiJI...**"
+        }
+    }
 }
 
 # Internationalization
