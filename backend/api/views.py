@@ -19,7 +19,7 @@ class TodoViewSet(ModelViewSet):
         serializer.save(user=self.request.user)
 
 
-class RegisterViewSet(generics.CreateAPIView):
+class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
 
