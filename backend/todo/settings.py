@@ -24,11 +24,21 @@ SECRET_KEY = "django-insecure--m=fxrq)zs5)3$f^3g87@a@9z+3bdu30kh$9+ocvq6+jkeu4^n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "api.alijonov.uz",
+    "task.alijonov.uz",
+    "localhost",
+    "127.0.0.1",
+]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "https://30409ac5c855.ngrok-free.app",
+    "https://task.alijonov.uz",
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://task.alijonov.uz",
 ]
 
 # Application definition
@@ -46,7 +56,6 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "corsheaders",
-    "drf_yasg",
 ]
 
 MIDDLEWARE = [
@@ -86,9 +95,9 @@ WSGI_APPLICATION = "todo.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "task_list_ww",
-        "USER": "task_list_ww",
-        "PASSWORD": "0r!5knu1[8;0O1@t",
+        "NAME": "todo",
+        "USER": "todo",
+        "PASSWORD": "a10042007",
         "HOST": "localhost",
         "PORT": "5432",
     }
@@ -148,6 +157,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "static"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
